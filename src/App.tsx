@@ -1,10 +1,11 @@
+// src/App.tsx
+import Header from "./components/Header";
+
 export default function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="p-8 rounded-2xl shadow">
-        <h1 className="text-2xl font-bold">React + TypeScript Baseline</h1>
-        <p className="mt-2 text-gray-600">You’re good to ship.</p>
-      </div>
+    <div className="min-h-[200vh] bg-gradient-to-b from-slate-900 via-slate-800 to-slate-700">
+      <Header />
+      <main className="pt-16">{/* content */}</main>
     </div>
   );
 }

@@ -1,0 +1,60 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme tokens via HEX vars */
+:root,
+:root[data-theme="light"] {
+  --brand: #9d9b14;          /* light brand */
+  --brand-contrast: #0b1220; /* text on brand (light) */
+
+  --surface: #f8fafc;        /* base surface */
+  --surface-2: #f1f5f9;      /* raised surface */
+  --text: #0f172a;           /* body text */
+  --muted: #64748b;          /* secondary */
+  --ring: var(--brand);
+}
+
+.theme-dark,
+:root[data-theme="dark"] {
+  --brand: #291658;          /* dark brand */
+  --brand-contrast: #ffffff; /* text on brand (dark) */
+
+  --surface: #0f172a;
+  --surface-2: #1e293b;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --ring: var(--brand);
+}
+
+/* Base layer */
+@layer base {
+  html, body, #root { height: 100%; }
+  body {
+    @apply font-sans antialiased;
+    background: var(--surface);
+    color: var(--text);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+/* Token-bound utilities */
+@layer components {
+  .bg-brand { background-color: var(--brand); }
+  .text-brand { color: var(--brand); }
+  .text-onbrand { color: var(--brand-contrast); }
+  .bg-surface { background-color: var(--surface); }
+  .bg-surface-2 { background-color: var(--surface-2); }
+  .text-body { color: var(--text); }
+  .text-muted { color: var(--muted); }
+  .ring-brand { --tw-ring-color: var(--ring); }
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition;
+    background: var(--brand);
+    color: var(--brand-contrast);
+  }
+}

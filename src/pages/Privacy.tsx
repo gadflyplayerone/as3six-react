@@ -61,7 +61,7 @@ export default function Privacy() {
             <br />
             <h2 id="contact" className="scroll-mt-24">Contact</h2>
             <p>
-              Questions? Email <a href="mailto:dolebob424@gmail.com">dolebob424@gmail.com</a>.
+              Questions? Email <a href="mailto:zach@as3six.com">zach@as3six.com</a>.
             </p>
             <br />
             <h2 id="updates" className="scroll-mt-24">Updates</h2>

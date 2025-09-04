@@ -115,7 +115,7 @@ export default function Licensing({
             </div>
             <div className="shrink-0 flex items-center gap-3">
               <a
-                href="mailto:dolebob424@gmail.com?subject=CWEC%20Licensing%20Inquiry&body=Hi%20AS3SIX%2C%0A%0AWe%E2%80%99d%20like%20to%20license%20CWEC%20for%20our%20electromagnets.%20Context%20%28use%20cases%2C%20sizes%2C%20volumes%29%3A%0A"
+                href="mailto:zach@as3six.com?subject=CWEC%20Licensing%20Inquiry&body=Hi%20AS3SIX%2C%0A%0AWe%E2%80%99d%20like%20to%20license%20CWEC%20for%20our%20electromagnets.%20Context%20%28use%20cases%2C%20sizes%2C%20volumes%29%3A%0A"
                 className="rounded-xl bg-theme-dark text-white px-4 py-2 text-sm font-medium hover:opacity-95 ring-1 ring-white/10"
               >
                 Email Licensing
@@ -273,10 +273,16 @@ export default function Licensing({
           </div>
           <div className="flex gap-3">
             <a
-              href="mailto:dolebob424@gmail.com?subject=CWEC%20Licensing%20Model&body=Coil%20sizes%2FOD%2C%20volumes%2C%20duty%20cycles%2C%20and%20target%20costs%3A%0A"
+              href="mailto:zach@as3six.com?subject=CWEC%20Licensing%20Model&body=Coil%20sizes%2FOD%2C%20volumes%2C%20duty%20cycles%2C%20and%20target%20costs%3A%0A"
               className="rounded-xl bg-white text-theme-dark px-4 py-2 text-sm font-semibold hover:opacity-95"
             >
               Email Licensing
+            </a>
+            <a
+              href="/#contact"
+              className="rounded-xl bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/15 ring-1 ring-white/10"
+            >
+              Contact
             </a>
           </div>
         </div>

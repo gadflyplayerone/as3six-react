@@ -33,7 +33,7 @@ export default function Footer({
   companyName = "",
   addressLines = ["Stanton, MI", "United States"],
   phone = "+1 (202) 422-2951",
-  email = "dolebob424@gmail.com",
+  email = "zach@as3six.com",
   social = {
     x: "https://x.com/as3six",
     youtube: "https://youtube.com/@gadflyplayerone",
@@ -169,7 +169,7 @@ export default function Footer({
                 Contact
               </a>
               <a
-                href="mailto:dolebob424@gmail.com?subject=Partnerships%20%2F%20CWEC"
+                href="mailto:zach@as3six.com?subject=Partnerships%20%2F%20CWEC"
                 className="rounded-lg bg-white/10 px-3 py-2 text-xs font-medium hover:bg-white/15 ring-1 ring-white/10"
               >
                 Partnerships

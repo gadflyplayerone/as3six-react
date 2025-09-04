@@ -56,6 +56,19 @@ const defaultItems: Industry[] = [
     ],
   },
   {
+  name: "Audio & Acoustics",
+  blurb: "Ultra-clean transduction for pure-fidelity and extended high-frequency systems.",
+  apps: [
+    "Reference Monitors",
+    "Hi-Fi Tweeters (40–60 kHz)",
+    "Parametric/Beamforming Arrays",
+    "Ultrasonic UX / Haptics",
+    "NDT / Imaging",
+    "Acoustic Sensing"
+  ],
+  icon: <IconWave />,
+},
+  {
     name: "Fusion & Plasma",
     blurb:
       "Rapid B-field adjustments for stability windows, ELM pacing, and diagnostic coils.",
@@ -405,3 +418,19 @@ function IconTruck() {
     </svg>
   );
 }
+
+// 2) Add this inline icon with the others at the bottom of the file
+function IconWave() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <path
+        d="M2 12c3-4 5-4 8 0s5 4 8 0 5-4 8 0"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+

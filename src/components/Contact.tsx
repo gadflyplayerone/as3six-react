@@ -14,7 +14,7 @@ export default function Contact({
   id = "contact",
   title = "Contact",
   subtitle = "Let’s align on scope, timelines, and outcomes.",
-  emailTo = "dolebob424@gmail.com",
+  emailTo = "zach@as3six.com",
   phone = "+1 (202) 422-2951",
   addressLines = ["Stanton, MI", "United States"],
   className = "",

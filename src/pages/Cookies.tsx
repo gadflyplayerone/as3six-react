@@ -24,7 +24,7 @@ export default function Cookies() {
           </ul>
            <br />
           <h2>Contact</h2>
-          <p>Questions? <a href="mailto:dolebob424@gmail.com">dolebob424@gmail.com</a></p>
+          <p>Questions? <a href="mailto:zach@as3six.com">zach@as3six.com</a></p>
         </article>
       </div>
     </main>

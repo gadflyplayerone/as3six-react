@@ -28,7 +28,7 @@ export default function Terms() {
           <p>These Terms are governed by the laws of your applicable jurisdiction (to be specified).</p>
            <br />
           <h2>Contact</h2>
-          <p>For questions about these Terms, email <a href="mailto:dolebob424@gmail.com">dolebob424@gmail.com</a>.</p>
+          <p>For questions about these Terms, email <a href="mailto:zach@as3six.com">zach@as3six.com</a>.</p>
         </article>
       </div>
     </main>

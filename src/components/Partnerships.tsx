@@ -62,11 +62,17 @@ export default function Partnerships({
 
             <div className="shrink-0 flex items-center gap-3">
               <a
-                href="mailto:dolebob424@gmail.com?subject=CWEC%20Partnership%20Inquiry&body=Hi%20AS3SIX%20Team%2C%0A%0AWe%E2%80%99d%20like%20to%20discuss%20a%20CWEC%20partnership.%20Here%E2%80%99s%20some%20context%3A%0A"
+                href="mailto:zach@as3six.com?subject=CWEC%20Partnership%20Inquiry&body=Hi%20AS3SIX%20Team%2C%0A%0AWe%E2%80%99d%20like%20to%20discuss%20a%20CWEC%20partnership.%20Here%E2%80%99s%20some%20context%3A%0A"
                 className="rounded-xl bg-theme-dark text-white px-4 py-2 text-sm font-medium hover:opacity-95 ring-1 ring-white/10"
               >
                 Email Partnerships
               </a>
+              <a
+              href="/#contact"
+              className="rounded-xl bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/15 ring-1 ring-white/10"
+            >
+              Contact
+            </a>
             </div>
           </div>
         </div>
@@ -141,7 +147,7 @@ export default function Partnerships({
             <div>
               <h3 className="text-white font-semibold text-lg">International Licensing & JV</h3>
               <p className="text-slate-300 text-sm">
-                Regional co-investment and tech transfer to localize build-of-materials and compliance.
+                Regional co-investment and tech transfer to localize bill-of-materials and compliance.
               </p>
             </div>
           </header>
@@ -153,7 +159,112 @@ export default function Partnerships({
           </SectionBlock>
           <FootAccent />
         </article>
+
+        {/* Audio & Acoustics */}
+        <article className={cardBase()}>
+          <header className="flex items-center gap-3">
+            <div className="grid h-11 w-11 place-items-center rounded-xl bg-white/10 text-white">
+              <IconSpeaker />
+            </div>
+            <div>
+              <h3 className="text-white font-semibold text-lg">Audio & Acoustics</h3>
+              <p className="text-slate-300 text-sm">
+                Pure-fidelity transduction and extended high-frequency response (40–60 kHz+) for next-gen sound.
+              </p>
+            </div>
+          </header>
+          <SectionBlock title="Sample applications">
+            {[
+              "Reference monitors & hi-fi tweeters",
+              "Extended HF tweeters (40–60 kHz+)",
+              "Parametric/beamforming arrays",
+              "Ultrasonic UX & haptics",
+              "Automotive audio transducers",
+            ].map(Chip)}
+          </SectionBlock>
+          <SectionBlock title="Ideal partners">
+            {[
+              "Hi-Fi & studio monitor OEMs",
+              "Pro-audio & line arrays",
+              "Automotive audio Tier-1s",
+              "Ultrasonic vendors",
+              "Academic/industrial acoustics labs",
+            ].map(Chip)}
+          </SectionBlock>
+          <FootAccent />
+        </article>
+
+        {/* Industrial Automation & Robotics */}
+<article className={cardBase()}>
+  <header className="flex items-center gap-3">
+    <div className="grid h-11 w-11 place-items-center rounded-xl bg-white/10 text-white">
+      <IconRobot />
+    </div>
+    <div>
+      <h3 className="text-white font-semibold text-lg">Industrial Automation & Robotics</h3>
+      <p className="text-slate-300 text-sm">
+        Deterministic, high-speed actuation for conveyors, pick/pack, EOAT, and safety systems with lower thermal budgets.
+      </p>
+    </div>
+  </header>
+  <SectionBlock title="Sample applications">
+    {[
+      "High-speed diverter actuators",
+      "Pick-and-place solenoids",
+      "EOAT clamps & brakes",
+      "Pneumatic valve drivers (ms-class)",
+      "Machine safety interlocks",
+    ].map(Chip)}
+  </SectionBlock>
+  <SectionBlock title="Ideal partners">
+    {[
+      "Robotics OEMs",
+      "System integrators / line builders",
+      "Sortation & AMR vendors",
+      "Pneumatics / valve manufacturers",
+      "PLC / motion solution providers",
+    ].map(Chip)}
+  </SectionBlock>
+  <FootAccent />
+</article>
+
+{/* Research & Academia */}
+<article className={cardBase()}>
+  <header className="flex items-center gap-3">
+    <div className="grid h-11 w-11 place-items-center rounded-xl bg-white/10 text-white">
+      <IconLab />
+    </div>
+    <div>
+      <h3 className="text-white font-semibold text-lg">Research & Academia</h3>
+      <p className="text-slate-300 text-sm">
+        Open collaboration on novel electromagnetic transduction, extended-band audio, and pulsed-power testbeds.
+      </p>
+    </div>
+  </header>
+  <SectionBlock title="Collaboration modes">
+    {[
+      "Sponsored research",
+      "SBIR/STTR proposals",
+      "Co-authored publications",
+      "Open testbed access",
+      "Student capstone projects",
+    ].map(Chip)}
+  </SectionBlock>
+  <SectionBlock title="Focus areas">
+    {[
+      "Advanced coil topologies",
+      "Driver control & DSP",
+      "Ultrasonic / parametric acoustics",
+      "Medical / industrial imaging",
+      "High-speed mechatronics",
+    ].map(Chip)}
+  </SectionBlock>
+  <FootAccent />
+</article>
+
       </div>
+
+      
 
       {/* How we partner */}
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -183,10 +294,16 @@ export default function Partnerships({
           </div>
           <div className="flex gap-3">
             <a
-              href="mailto:dolebob424@gmail.com?subject=Partnerships%20%2F%20CWEC&body=Hi%20AS3SIX%2C%0A%0AWe%E2%80%99d%20like%20to%20discuss%20a%20partnership%20for%20%5BAutomotive%20%7C%20Defense%20%7C%20International%5D.%0AContext%3A%20"
+              href="mailto:zach@as3six.com?subject=Partnerships%20%2F%20CWEC&body=Hi%20AS3SIX%2C%0A%0AWe%E2%80%99d%20like%20to%20discuss%20a%20partnership%20for%20%5BAutomotive%20%7C%20Defense%20%7C%20International%20%7C%20Audio%5D.%0AContext%3A%20"
               className="rounded-xl bg-white text-theme-dark px-4 py-2 text-sm font-semibold hover:opacity-95"
             >
               Email Partnerships
+            </a>
+            <a
+              href="/#contact"
+              className="rounded-xl bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/15 ring-1 ring-white/10"
+            >
+              Contact
             </a>
           </div>
         </div>
@@ -324,3 +441,25 @@ function IconFactory() {
     </svg>
   );
 }
+function IconSpeaker() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <rect x="6" y="3" width="12" height="18" rx="2.5" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="12" cy="9" r="2" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="12" cy="16" r="3.5" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+function IconRobot() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <rect x="6" y="8" width="12" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="9" cy="12" r="1.2" fill="currentColor" />
+      <circle cx="15" cy="12" r="1.2" fill="currentColor" />
+      <path d="M12 4v3M8 18v2M16 18v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M4 10h2M18 10h2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+

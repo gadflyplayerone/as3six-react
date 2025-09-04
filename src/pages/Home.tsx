@@ -33,7 +33,7 @@ export default function Home() {
         id="contact"
         title="Contact"
         subtitle="We typically respond within one business day."
-        emailTo="dolebob424@gmail.com"
+        emailTo="zach@as3six.com"
         phone="+1 (202) 422-2951"
         addressLines={["Stanton, MI", "United States"]}
       />

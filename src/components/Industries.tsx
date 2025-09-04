@@ -249,19 +249,6 @@ const defaultItems: Industry[] = [
       "Blast/door latch quick-release mechanisms",
       "Elevator brake release coils"
     ],
-  },
-  {
-    name: "R&D & Test",
-    blurb:
-      "A general-purpose building block for rapid magnetic experiments and fixtures.",
-    apps: [
-      "Pulse coil fixtures for materials studies",
-      "EMI/ESD test injection coils",
-      "Magnetic hysteresis/ BH loop shapers",
-      "Timing calibration sources (ns edges)",
-      "Compact Helmholtz adjuncts with fast tuning",
-      "Retrofit of existing benches with CWEC modules"
-    ],
   }
 ];
 

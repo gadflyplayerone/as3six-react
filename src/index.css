@@ -58,3 +58,6 @@
     color: var(--brand-contrast);
   }
 }
+
+
+html { scroll-behavior: smooth; }

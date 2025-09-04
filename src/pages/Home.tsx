@@ -17,11 +17,7 @@ export default function Home() {
 
   return (
     <main className="pt-16">
-      <section id="overview" className="scroll-mt-16">
-        {/* your hero / overview content here */}
-      </section>
-
-      <section id="gallery" className="scroll-mt-16">
+      <section id="about" className="scroll-mt-16">
         <Gallery title="" images={images} autoPlayMs={4000} headerOffsetPx={64} />
       </section>
 

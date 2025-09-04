@@ -61,3 +61,10 @@
 
 
 html { scroll-behavior: smooth; }
+
+/* Page chrome + overscroll color */
+html, body, #root { height: 100%; }
+html, body { margin: 0; background-color: #291658; } /* match your footer brand */
+
+/* Keep phone-like rubber-band but avoid cross-page bounce chaining */
+html { overscroll-behavior-y: contain; }

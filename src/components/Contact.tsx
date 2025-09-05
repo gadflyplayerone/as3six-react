@@ -1,5 +1,8 @@
 import React, { useMemo, useState } from "react";
 
+import { contactPageLd } from "@/seo/jsonld";
+import SEO from "@/seo/SEO";
+
 type ContactProps = {
   id?: string;
   title?: string;
@@ -58,6 +61,14 @@ export default function Contact({
   }
 
   return (
+    import { contactPageLd } from "@/seo/jsonld";
+<SEO
+  title="Contact AS3SIX"
+  description="Discuss CWEC integration, timelines, and outcomes. Automotive, defense & space, and audio partners welcome."
+  path="/#contact"
+  jsonLd={[contactPageLd]}
+/>
+
     <section
       id={id}
       className={["scroll-mt-16 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20", className].join(" ")}

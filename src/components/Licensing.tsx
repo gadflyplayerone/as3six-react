@@ -1,5 +1,7 @@
 import React, { useMemo, useState } from "react";
 
+import SEO from "@/seo/SEO";
+
 type LicensingProps = {
   id?: string;
   title?: string;
@@ -68,6 +70,12 @@ export default function Licensing({
   }, [volume, licensePerUnit, royaltyPerUnit]);
 
   return (
+    <SEO
+  title="Licensing — CWEC Pricing & Royalties | AS3SIX"
+  description="Flexible licensing and per-unit royalties aligned to coil size and shipped volume. Build with CWEC across automotive, defense & space, and audio applications."
+  path="/#licensing"
+/>
+
     <section
       id={id}
       className={[

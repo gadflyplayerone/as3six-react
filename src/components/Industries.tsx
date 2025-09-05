@@ -1,5 +1,7 @@
 import React from "react";
 
+import SEO from "@/seo/SEO";
+
 type Industry = {
   name: string;
   blurb: string;
@@ -260,6 +262,13 @@ export default function Industries({
   className = "",
 }: IndustriesProps) {
   return (
+    <SEO
+  title="Industries — Automotive, Defense & Space, Audio | AS3SIX"
+  description="Where CWEC moves the needle: ABS/ESC valves, injectors, HV contactors, pulsed-power gating coils, seeker service, degauss/field shaping, and hi-fi/extended-HF speakers."
+  path="/#industries"
+  type="article"
+/>
+
     <section
       id={id}
       className={[

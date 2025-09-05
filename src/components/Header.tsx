@@ -1,22 +1,94 @@
 // src/components/Header.tsx
 import { useEffect, useMemo, useRef, useState } from "react";
-// If you have "@/*" alias, switch to "@/hooks/useScrollState"
 import { useScrollState } from "@/hooks/useScrollState";
+import SEO from "@/seo/SEO";
+
 import logoLight from "assets/images/logo-title-light.png";
 import logoDark from "assets/images/logo-title-dark.png";
 
 const NAV = [
-  { label: "About", href: "/#about" },
-  { label: "Industries",  href: "/#industries"  },
-  { label: "Partnerships",  href: "/#partnerships"  },
-  { label: "Licensing",  href: "/#licensing"  },
+  { label: "About",        href: "/#about" },
+  { label: "Industries",   href: "/#industries" },
+  { label: "Partnerships", href: "/#partnerships" },
+  { label: "Licensing",    href: "/#licensing" },
 ];
 
+/** 
+ * Smooth, flicker-free pin/unpin:
+ * - unpin only after scrolling DOWN by UNPIN_DELTA px
+ * - re-pin only after scrolling UP by PIN_DELTA px
+ * - small debounce to avoid rapid toggles on tiny wheel/touch jitter
+ */
+function usePinnedHeader(
+  { topThreshold = 12, pinDelta = 18, unpinDelta = 18, minDelayMs = 140 } = {}
+) {
+  const [pinned, setPinned] = useState(true);
+  const lastY = useRef(0);
+  const acc = useRef(0); // accumulate movement in current direction
+  const lastSwitch = useRef(0);
+  const raf = useRef<number | null>(null);
+
+  useEffect(() => {
+    lastY.current = window.scrollY || 0;
+
+    const onScroll = () => {
+      if (raf.current) cancelAnimationFrame(raf.current);
+      raf.current = requestAnimationFrame(() => {
+        const y = window.scrollY || 0;
+        const dy = y - lastY.current;
+        lastY.current = y;
+
+        const now = performance.now();
+
+        // Always pin near the very top (avoid bounce jitter)
+        if (y <= topThreshold) {
+          if (!pinned) { setPinned(true); lastSwitch.current = now; }
+          acc.current = 0;
+          return;
+        }
+
+        // reset accumulator if direction flips
+        if ((dy > 0 && acc.current < 0) || (dy < 0 && acc.current > 0)) {
+          acc.current = 0;
+        }
+        acc.current += dy;
+
+        // hide after enough downward travel
+        if (acc.current > unpinDelta && pinned && now - lastSwitch.current > minDelayMs) {
+          setPinned(false);
+          lastSwitch.current = now;
+          acc.current = 0;
+        }
+        // show after enough upward travel
+        else if (acc.current < -pinDelta && !pinned && now - lastSwitch.current > minDelayMs) {
+          setPinned(true);
+          lastSwitch.current = now;
+          acc.current = 0;
+        }
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf.current) cancelAnimationFrame(raf.current);
+    };
+  }, [pinned, pinDelta, unpinDelta, minDelayMs, topThreshold]);
+
+  return pinned;
+}
+
 export default function Header() {
-  const { direction, isScrolled } = useScrollState(6, 12);
-  const isVisible = useMemo(() => !isScrolled || direction === "up" || direction === "none", [direction, isScrolled]);
+  // You still use this for color/blur thresholding
+  const { isScrolled } = useScrollState(6, 12);
+
+  // New: stable pin/unpin decision (no flicker)
+  const pinned = usePinnedHeader();
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement | null>(null);
+
+  // If menu is open, keep header visible
+  const isVisible = open || pinned;
 
   // lock/unlock page scroll when menu is open
   useEffect(() => {
@@ -35,20 +107,19 @@ export default function Header() {
     ? "bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 shadow-sm"
     : "bg-transparent";
   const text = isScrolled ? "text-gray-900" : "text-white";
-
   const logoSrc = isScrolled ? logoDark : logoLight;
-
-  const onNavigate = () => setOpen(false); // close drawer after clicking a link
+  const onNavigate = () => setOpen(false);
 
   return (
     <header
       ref={headerRef}
+      role="banner"
       className={[
-        "fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-out will-change-transform",
+        // transform-gpu reduces paint/flicker on Safari/iOS when combined with blur
+        "fixed top-0 left-0 right-0 z-50 transform-gpu transition-transform duration-300 ease-out will-change-transform",
         bg,
         isVisible ? "translate-y-0" : "-translate-y-full",
       ].join(" ")}
-      role="banner"
     >
       <div className="h-[env(safe-area-inset-top)]" aria-hidden="true" />
 
@@ -57,7 +128,7 @@ export default function Header() {
           {/* Brand */}
           <a href="/" className="flex items-center gap-3">
             <img src={logoSrc} alt="AS3SIX" className="h-14 w-auto select-none" draggable={false} />
-            <span className={`font-semibold ${text}`}></span>
+            <span className={`font-semibold ${text}`} />
           </a>
 
           {/* Desktop nav */}
@@ -69,7 +140,7 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right-side actions */}
+          {/* Actions */}
           <div className="flex items-center gap-3">
             <a
               href="/#contact"
@@ -80,8 +151,6 @@ export default function Header() {
             >
               Contact
             </a>
-
-            {/* Mobile menu button (right aligned) */}
             <button
               type="button"
               className={`md:hidden inline-flex items-center justify-center rounded-lg p-2 focus:outline-none focus:ring-2 ring-brand ${text}`}
@@ -96,34 +165,32 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Off-canvas mobile menu (right slide-in) */}
-<div
-  id="mobile-menu"
-  role="dialog"
-  aria-modal="true"
-  className={[
-    "md:hidden fixed top-16 right-0 bottom-0 z-40 w-72 max-w-[85vw]",
-    "transition-transform duration-300 ease-out bg-gray-900",
-    // ⬇️ Always use dark header color + light text
-    "bg-theme-dark/95 backdrop-blur text-white",
-    open ? "translate-x-0" : "translate-x-full",
-  ].join(" ")}
->
-  <ul className="px-4 py-6 space-y-2 bg-gray-900">
-    {NAV.map((i) => (
-      <li key={i.href}>
-        <a
-          href={i.href}
-          onClick={onNavigate}
-          className="block rounded-lg px-3 py-2 font-medium text-white/90 hover:text-white hover:bg-white/5"
-        >
-          {i.label}
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
-
+      {/* Mobile drawer */}
+      <div
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        className={[
+          "md:hidden fixed top-16 right-0 bottom-0 z-40 w-72 max-w-[85vw]",
+          "transition-transform duration-300 ease-out",
+          "bg-theme-dark text-white",
+          open ? "translate-x-0" : "translate-x-full",
+        ].join(" ")}
+      >
+        <ul className="px-4 py-6 space-y-2">
+          {NAV.map((i) => (
+            <li key={i.href}>
+              <a
+                href={i.href}
+                onClick={onNavigate}
+                className="block rounded-lg px-3 py-2 font-medium text-white/90 hover:text-white hover:bg-white/5"
+              >
+                {i.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* Backdrop */}
       <button

@@ -1,5 +1,7 @@
 import React from "react";
 
+import SEO from "@/seo/SEO";
+
 type PartnershipsProps = {
   id?: string;
   title?: string;
@@ -14,6 +16,12 @@ export default function Partnerships({
   className = "",
 }: PartnershipsProps) {
   return (
+    <SEO
+  title="Partnerships — Co-development & IP Licensing | AS3SIX"
+  description="Partner with AS3SIX to integrate CWEC: co-development, IP licensing, reference designs, and manufacturing enablement for regulated and global markets."
+  path="/#partnerships"
+/>
+
     <section
       id={id}
       className={[

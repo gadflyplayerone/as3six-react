@@ -4,11 +4,11 @@ import { Helmet } from "react-helmet-async";
 type SEOProps = {
   title: string;
   description: string;
-  path?: string;             // e.g., "/industries"
-  image?: string;            // absolute or /relative in /public
-  keywords?: string[];       // non-Google engines
+  path?: string; // e.g., "/industries"
+  image?: string; // absolute or /relative in /public
+  keywords?: string[]; // non-Google engines
   type?: "website" | "article" | "product";
-  jsonLd?: object[];         // array of JSON-LD graphs
+  jsonLd?: object[]; // array of JSON-LD graphs
 };
 
 const ORIGIN = "https://as3six.com";
@@ -48,8 +48,11 @@ export default function SEO({
 
       {/* JSON-LD */}
       {jsonLd.map((node, i) => (
-        <script key={i} type="application/ld+json">{JSON.stringify(node)}</script>
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(node)}
+        </script>
       ))}
     </Helmet>
   );
 }
+ß

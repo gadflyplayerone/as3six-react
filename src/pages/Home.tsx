@@ -34,7 +34,7 @@ export default function Home() {
 />
     <main className="pt-16">
       <section id="about" className="scroll-mt-16">
-        <Gallery title="" images={images} autoPlayMs={4000} headerOffsetPx={64} />
+        <Gallery title="" images={images} autoPlayMs={10000} headerOffsetPx={64} />
       </section>
 
       <Industries id="industries" />

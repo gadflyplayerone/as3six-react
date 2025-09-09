@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "cleanup": "./cleanup.sh",
     "preview": "vite preview --open",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .ts,.tsx",

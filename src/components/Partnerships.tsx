@@ -1,7 +1,5 @@
 import React from "react";
 
-import SEO from "@/seo/SEO";
-
 type PartnershipsProps = {
   id?: string;
   title?: string;
@@ -16,12 +14,6 @@ export default function Partnerships({
   className = "",
 }: PartnershipsProps) {
   return (
-    <SEO
-  title="Partnerships — Co-development & IP Licensing | AS3SIX"
-  description="Partner with AS3SIX to integrate CWEC: co-development, IP licensing, reference designs, and manufacturing enablement for regulated and global markets."
-  path="/#partnerships"
-/>
-
     <section
       id={id}
       className={[
@@ -70,7 +62,7 @@ export default function Partnerships({
 
             <div className="shrink-0 flex items-center gap-3">
               <a
-                href="mailto:zach@as3six.com?subject=CWEC%20Partnership%20Inquiry&body=Hi%20AS3SIX%20Team%2C%0A%0AWe%E2%80%99d%20like%20to%20discuss%20a%20CWEC%20partnership.%20Here%E2%80%99s%20some%20context%3A%0A"
+                href="mailto:contact@as3six.com?subject=CWEC%20Partnership%20Inquiry&body=Hi%20AS3SIX%20Team%2C%0A%0AWe%E2%80%99d%20like%20to%20discuss%20a%20CWEC%20partnership.%20Here%E2%80%99s%20some%20context%3A%0A"
                 className="rounded-xl bg-theme-dark text-white px-4 py-2 text-sm font-medium hover:opacity-95 ring-1 ring-white/10"
               >
                 Email Partnerships
@@ -302,7 +294,7 @@ export default function Partnerships({
           </div>
           <div className="flex gap-3">
             <a
-              href="mailto:zach@as3six.com?subject=Partnerships%20%2F%20CWEC&body=Hi%20AS3SIX%2C%0A%0AWe%E2%80%99d%20like%20to%20discuss%20a%20partnership%20for%20%5BAutomotive%20%7C%20Defense%20%7C%20International%20%7C%20Audio%5D.%0AContext%3A%20"
+              href="mailto:contact@as3six.com?subject=Partnerships%20%2F%20CWEC&body=Hi%20AS3SIX%2C%0A%0AWe%E2%80%99d%20like%20to%20discuss%20a%20partnership%20for%20%5BAutomotive%20%7C%20Defense%20%7C%20International%20%7C%20Audio%5D.%0AContext%3A%20"
               className="rounded-xl bg-white text-theme-dark px-4 py-2 text-sm font-semibold hover:opacity-95"
             >
               Email Partnerships

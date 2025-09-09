@@ -1,8 +1,5 @@
 import React, { useMemo, useState } from "react";
 
-import { contactPageLd } from "@/seo/jsonld";
-import SEO from "@/seo/SEO";
-
 type ContactProps = {
   id?: string;
   title?: string;
@@ -17,9 +14,9 @@ export default function Contact({
   id = "contact",
   title = "Contact",
   subtitle = "Let’s align on scope, timelines, and outcomes.",
-  emailTo = "zach@as3six.com",
+  emailTo = "contact@as3six.com",
   phone = "+1 (202) 422-2951",
-  addressLines = ["Stanton, MI", "United States"],
+  addressLines = ["Michigan", "United States"],
   className = "",
 }: ContactProps) {
   const [name, setName] = useState("");
@@ -61,14 +58,6 @@ export default function Contact({
   }
 
   return (
-    import { contactPageLd } from "@/seo/jsonld";
-<SEO
-  title="Contact AS3SIX"
-  description="Discuss CWEC integration, timelines, and outcomes. Automotive, defense & space, and audio partners welcome."
-  path="/#contact"
-  jsonLd={[contactPageLd]}
-/>
-
     <section
       id={id}
       className={["scroll-mt-16 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20", className].join(" ")}

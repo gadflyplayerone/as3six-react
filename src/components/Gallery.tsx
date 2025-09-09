@@ -13,7 +13,7 @@ type Slot = "left" | "center" | "right" | "offLeft" | "offRight";
 
 export default function Gallery({
   images,
-  autoPlayMs = 2000,
+  autoPlayMs = 9999999,
   headerOffsetPx = 64,
   className = "",
   title, // 👈 NEW
@@ -84,20 +84,45 @@ export default function Gallery({
 
   const heightStyle = { height: `calc(100vh - ${headerOffsetPx}px)` };
 
-  const slotClass = (slot: Slot) => {
+  // Helper: is the "entering" card that moves to center (sits above for the pass)
+  const isEnteringCenter = (role: "prev" | "current" | "next") =>
+    (anim === "toNext" && role === "next") || (anim === "toPrev" && role === "prev");
+
+  // Smooth, layered motion:
+  // - Longer, eased timing; will-change hints
+  // - Outgoing current fades/slides to its side
+  // - Incoming side slides to center, sits "above" via higher z during the transition,
+  //   scales up and de-blurs/saturates to non-translucent.
+  const slotClass = (slot: Slot, role: "prev" | "current" | "next") => {
     const base =
-      "absolute top-1/2 -translate-y-1/2 select-none transition-[transform,opacity,filter] duration-500 ease-out";
+      "absolute top-1/2 -translate-y-1/2 select-none " +
+      "transition-[transform,opacity,filter] duration-700 " +
+      "will-change-transform will-change-opacity will-change-filter";
+    const easing = " ease-[cubic-bezier(.22,.61,.36,1)]";
+
+    const entering = isEnteringCenter(role);
+
     switch (slot) {
       case "center":
-        return `${base} left-1/2 -translate-x-1/2 z-20 opacity-100 scale-100 drop-shadow-xl`;
+        // Elevated z if this is the entering card, for a graceful overlap
+        return (
+          base +
+          easing +
+          ` left-1/2 -translate-x-1/2 ${entering ? "z-40" : "z-30"} ` +
+          "opacity-100 scale-100 drop-shadow-xl filter saturate-110"
+        );
       case "left":
-        return `${base} z-10 opacity-45 scale-90 left-[25%] -translate-x-1/2`;
+        // Outgoing current lands here with fade/scale; keep under center
+        return base + easing + " z-10 opacity-45 scale-90 left-[25%] -translate-x-1/2 filter saturate-90";
       case "right":
-        return `${base} z-10 opacity-45 scale-90 left-[75%] -translate-x-1/2`;
+        // Outgoing current lands here with fade/scale; keep under center
+        return base + easing + " z-10 opacity-45 scale-90 left-[75%] -translate-x-1/2 filter saturate-90";
       case "offLeft":
-        return `${base} z-0 opacity-0 scale-90 left-[-15%] -translate-x-1/2`;
+        // Slightly farther off-screen for more perceived smoothness
+        return base + easing + " z-0 opacity-0 scale-90 left-[-20%] -translate-x-1/2 filter saturate-90";
       case "offRight":
-        return `${base} z-0 opacity-0 scale-90 left-[115%] -translate-x-1/2`;
+        // Slightly farther off-screen for more perceived smoothness
+        return base + easing + " z-0 opacity-0 scale-90 left-[120%] -translate-x-1/2 filter saturate-90";
     }
   };
 
@@ -110,12 +135,12 @@ export default function Gallery({
     }
     if (anim === "toNext") {
       if (role === "prev") return "offLeft";
-      if (role === "current") return "left";
-      return "center"; // next -> center
+      if (role === "current") return "left"; // current -> left (fade/slide out)
+      return "center"; // next -> center (slide in above, de-fade)
     }
     // toPrev
-    if (role === "prev") return "center"; // prev -> center
-    if (role === "current") return "right";
+    if (role === "prev") return "center"; // prev -> center (slide in above, de-fade)
+    if (role === "current") return "right"; // current -> right (fade/slide out)
     return "offRight";
   };
 
@@ -139,7 +164,7 @@ export default function Gallery({
     >
       {/* title (top-center) */}
       {title && (
-        <div className="pointer-events-none absolute top-3 left-1/2 -translate-x-1/2 z-40">
+        <div className="pointer-events-none absolute top-3 left-1/2 -translate-x-1/2 z-50">
           <div className="px-3 py-1 rounded-full bg-black/40 text-white text-sm md:text-base font-medium backdrop-blur">
             {title}
           </div>
@@ -157,9 +182,11 @@ export default function Gallery({
                 data-slot={slot} // used to filter transitionend
                 className={[
                   "max-w-[72vw] max-h-[72vh] md:max-w-[60vw] md:max-h-[70vh] object-contain",
-                  slotClass(slot),
+                  slotClass(slot, role),
                 ].join(" ")}
                 draggable={false}
+                // Ensure the same easing even if Tailwind arbitrary-ease is stripped in prod
+                style={{ transitionTimingFunction: "cubic-bezier(.22,.61,.36,1)" }}
                 onClick={() => {
                   if (slot === "left") goPrev();
                   if (slot === "right") goNext();
@@ -189,33 +216,32 @@ export default function Gallery({
       )}
 
       {/* dots */}
-{n > 1 && (
-  <div className="pointer-events-auto absolute bottom-6 left-0 right-0 z-30 flex items-center justify-center gap-2">
-    {images.map((_, i) => {
-      const active = i === index;
-      return (
-        <button
-          key={i}
-          type="button"
-          aria-label={`Go to slide ${i + 1}`}
-          onClick={() => {
-            if (isAnimating || i === index) return;
-            if (i === (index + 1) % n) return goNext();
-            if (i === (index - 1 + n) % n) return goPrev();
-            setIndex(i); // jump
-          }}
-          className={[
-            "h-2.5 w-2.5 rounded-full transition-all duration-200",
-            active
-              ? "bg-white shadow-[0_0_0_4px_rgba(0,0,0,0.12)]" // ⬅️ changed to white
-              : "bg-theme-light/40 hover:bg-theme-light/70",
-          ].join(" ")}
-        />
-      );
-    })}
-  </div>
-)}
-
+      {n > 1 && (
+        <div className="pointer-events-auto absolute bottom-6 left-0 right-0 z-30 flex items-center justify-center gap-2">
+          {images.map((_, i) => {
+            const active = i === index;
+            return (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Go to slide ${i + 1}`}
+                onClick={() => {
+                  if (isAnimating || i === index) return;
+                  if (i === (index + 1) % n) return goNext();
+                  if (i === (index - 1 + n) % n) return goPrev();
+                  setIndex(i); // jump
+                }}
+                className={[
+                  "h-2.5 w-2.5 rounded-full transition-all duration-200",
+                  active
+                    ? "bg-white shadow-[0_0_0_4px_rgba(0,0,0,0.12)]"
+                    : "bg-theme-light/40 hover:bg-theme-light/70",
+                ].join(" ")}
+              />
+            );
+          })}
+        </div>
+      )}
     </section>
   );
 }

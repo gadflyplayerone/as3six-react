@@ -1,7 +1,6 @@
 // src/components/Header.tsx
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useScrollState } from "@/hooks/useScrollState";
-import SEO from "@/seo/SEO";
 
 import logoLight from "assets/images/logo-title-light.png";
 import logoDark from "assets/images/logo-title-dark.png";
@@ -13,23 +12,34 @@ const NAV = [
   { label: "Licensing",    href: "/#licensing" },
 ];
 
-/** 
- * Smooth, flicker-free pin/unpin:
- * - unpin only after scrolling DOWN by UNPIN_DELTA px
- * - re-pin only after scrolling UP by PIN_DELTA px
- * - small debounce to avoid rapid toggles on tiny wheel/touch jitter
+/**
+ * Behavior required:
+ * - Header slides UP (hide) as soon as the user starts scrolling (any direction).
+ * - Header slides DOWN (show) only after scrolling has COMPLETELY stopped
+ *   for a short idle window (no jitter when merely slowing).
+ *
+ * Notes:
+ * - Always show near the very top to avoid rubber-band bounce issues.
+ * - Keep all styling/markup exactly as in the original component.
  */
 function usePinnedHeader(
-  { topThreshold = 12, pinDelta = 18, unpinDelta = 18, minDelayMs = 140 } = {}
+  { topThreshold = 12, idleRevealMs = 220, microDelta = 2 } = {}
 ) {
   const [pinned, setPinned] = useState(true);
   const lastY = useRef(0);
-  const acc = useRef(0); // accumulate movement in current direction
-  const lastSwitch = useRef(0);
   const raf = useRef<number | null>(null);
+  const idleTimer = useRef<number | null>(null);
 
   useEffect(() => {
     lastY.current = window.scrollY || 0;
+
+    const scheduleIdleReveal = () => {
+      if (idleTimer.current) window.clearTimeout(idleTimer.current);
+      idleTimer.current = window.setTimeout(() => {
+        // Reveal only after a full idle (true stop)
+        setPinned(true);
+      }, idleRevealMs);
+    };
 
     const onScroll = () => {
       if (raf.current) cancelAnimationFrame(raf.current);
@@ -38,33 +48,23 @@ function usePinnedHeader(
         const dy = y - lastY.current;
         lastY.current = y;
 
-        const now = performance.now();
-
-        // Always pin near the very top (avoid bounce jitter)
+        // Always show near the very top (prevents bounce flicker)
         if (y <= topThreshold) {
-          if (!pinned) { setPinned(true); lastSwitch.current = now; }
-          acc.current = 0;
+          if (!pinned) setPinned(true);
+          // Still schedule an idle reveal to keep logic consistent
+          scheduleIdleReveal();
           return;
         }
 
-        // reset accumulator if direction flips
-        if ((dy > 0 && acc.current < 0) || (dy < 0 && acc.current > 0)) {
-          acc.current = 0;
+        // If there is *any* real movement, immediately hide
+        if (Math.abs(dy) >= microDelta) {
+          if (pinned) setPinned(false); // slide up/out as soon as scrolling starts
+          scheduleIdleReveal();         // and wait for complete stop to show again
+          return;
         }
-        acc.current += dy;
 
-        // hide after enough downward travel
-        if (acc.current > unpinDelta && pinned && now - lastSwitch.current > minDelayMs) {
-          setPinned(false);
-          lastSwitch.current = now;
-          acc.current = 0;
-        }
-        // show after enough upward travel
-        else if (acc.current < -pinDelta && !pinned && now - lastSwitch.current > minDelayMs) {
-          setPinned(true);
-          lastSwitch.current = now;
-          acc.current = 0;
-        }
+        // Tiny deltas: just (re)arm the idle settle
+        scheduleIdleReveal();
       });
     };
 
@@ -72,17 +72,18 @@ function usePinnedHeader(
     return () => {
       window.removeEventListener("scroll", onScroll);
       if (raf.current) cancelAnimationFrame(raf.current);
+      if (idleTimer.current) window.clearTimeout(idleTimer.current);
     };
-  }, [pinned, pinDelta, unpinDelta, minDelayMs, topThreshold]);
+  }, [pinned, topThreshold, idleRevealMs, microDelta]);
 
   return pinned;
 }
 
 export default function Header() {
-  // You still use this for color/blur thresholding
+  // Keep using this for color/blur thresholding
   const { isScrolled } = useScrollState(6, 12);
 
-  // New: stable pin/unpin decision (no flicker)
+  // New behavior: hide on any scroll-start; show only after true stop
   const pinned = usePinnedHeader();
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement | null>(null);
@@ -216,7 +217,7 @@ function SvgBars() {
 function SvgX() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none">
-      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }

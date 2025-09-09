@@ -1,7 +1,5 @@
 import React, { useMemo, useState } from "react";
 
-import SEO from "@/seo/SEO";
-
 type LicensingProps = {
   id?: string;
   title?: string;
@@ -70,12 +68,6 @@ export default function Licensing({
   }, [volume, licensePerUnit, royaltyPerUnit]);
 
   return (
-    <SEO
-  title="Licensing — CWEC Pricing & Royalties | AS3SIX"
-  description="Flexible licensing and per-unit royalties aligned to coil size and shipped volume. Build with CWEC across automotive, defense & space, and audio applications."
-  path="/#licensing"
-/>
-
     <section
       id={id}
       className={[
@@ -123,7 +115,7 @@ export default function Licensing({
             </div>
             <div className="shrink-0 flex items-center gap-3">
               <a
-                href="mailto:zach@as3six.com?subject=CWEC%20Licensing%20Inquiry&body=Hi%20AS3SIX%2C%0A%0AWe%E2%80%99d%20like%20to%20license%20CWEC%20for%20our%20electromagnets.%20Context%20%28use%20cases%2C%20sizes%2C%20volumes%29%3A%0A"
+                href="mailto:contact@as3six.com?subject=CWEC%20Licensing%20Inquiry&body=Hi%20AS3SIX%2C%0A%0AWe%E2%80%99d%20like%20to%20license%20CWEC%20for%20our%20electromagnets.%20Context%20%28use%20cases%2C%20sizes%2C%20volumes%29%3A%0A"
                 className="rounded-xl bg-theme-dark text-white px-4 py-2 text-sm font-medium hover:opacity-95 ring-1 ring-white/10"
               >
                 Email Licensing
@@ -281,7 +273,7 @@ export default function Licensing({
           </div>
           <div className="flex gap-3">
             <a
-              href="mailto:zach@as3six.com?subject=CWEC%20Licensing%20Model&body=Coil%20sizes%2FOD%2C%20volumes%2C%20duty%20cycles%2C%20and%20target%20costs%3A%0A"
+              href="mailto:contact@as3six.com?subject=CWEC%20Licensing%20Model&body=Coil%20sizes%2FOD%2C%20volumes%2C%20duty%20cycles%2C%20and%20target%20costs%3A%0A"
               className="rounded-xl bg-white text-theme-dark px-4 py-2 text-sm font-semibold hover:opacity-95"
             >
               Email Licensing

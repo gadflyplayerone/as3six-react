@@ -8,23 +8,23 @@ export default function Cookies() {
         </header>
 
         <article className="prose prose-invert prose-slate max-w-none text-white">
-          <h2>What Are Cookies?</h2>
+          <h1><strong>What Are Cookies?</strong></h1>
           <p>Cookies are small text files stored on your device to remember settings and improve UX.</p>
           <br />
-          <h2>Types We Use</h2>
+          <h1><strong>Types We Use</strong></h1>
           <ul>
-            <li><strong>Essential</strong> – required for core functionality.</li>
-            <li><strong>Analytics</strong> – to understand usage and improve performance.</li>
+            <li>Essential– required for core functionality.</li>
+            <li>Analytics– to understand usage and improve performance.</li>
           </ul>
           <br />
-          <h2>Your Controls</h2>
+          <h1><strong>Your Controls</strong></h1>
           <ul>
             <li>Browser settings to block/clear cookies.</li>
             <li>Opt-out mechanisms for analytics (if enabled).</li>
           </ul>
            <br />
-          <h2>Contact</h2>
-          <p>Questions? <a href="mailto:zach@as3six.com">zach@as3six.com</a></p>
+          <h1><strong>Contact</strong></h1>
+          <p>Questions? <a href="mailto:contact@as3six.com">contact@as3six.com</a></p>
         </article>
       </div>
     </main>

@@ -10,35 +10,21 @@ const legalLinks = [
 
 import logoLight from "assets/images/logo-title-light.png"; // optional brand mark on dark footer
 
-type Social = {
-  linkedin?: string;
-  x?: string;        // Twitter/X
-  github?: string;
-  youtube?: string;
-  website?: string;
-};
-
 type FooterProps = {
   id?: string;
   companyName?: string;
   addressLines?: string[];   // e.g., ["Detroit, MI", "United States"]
   phone?: string;            // e.g., "+1 (313) 555-0123"
   email?: string;            // e.g., "hello@yourco.com"
-  social?: Social;
   className?: string;
 };
 
 export default function Footer({
   id = "footer",
   companyName = "",
-  addressLines = ["Stanton, MI", "United States"],
+  addressLines = ["Michigan", "United States"],
   phone = "+1 (202) 422-2951",
-  email = "zach@as3six.com",
-  social = {
-    x: "https://x.com/as3six",
-    youtube: "https://youtube.com/@gadflyplayerone",
-    github: "https://github.com/as3ics"
-  },
+  email = "contact@as3six.com",
   className = "",
 }: FooterProps) {
   const year = new Date().getFullYear();
@@ -99,35 +85,6 @@ export default function Footer({
                 <a className="hover:opacity-90" href={`mailto:${email}`}>{email}</a>
               </div>
             </address>
-
-            {/* Social */}
-            <div className="mt-3 flex items-center gap-3">
-              {social.linkedin && (
-                <a href={social.linkedin} aria-label="LinkedIn" className="hover:opacity-90">
-                  <IconLinkedIn />
-                </a>
-              )}
-              {social.x && (
-                <a href={social.x} aria-label="X" className="hover:opacity-90">
-                  <IconX />
-                </a>
-              )}
-              {social.github && (
-                <a href={social.github} aria-label="GitHub" className="hover:opacity-90">
-                  <IconGitHub />
-                </a>
-              )}
-              {social.youtube && (
-                <a href={social.youtube} aria-label="YouTube" className="hover:opacity-90">
-                  <IconYouTube />
-                </a>
-              )}
-              {social.website && (
-                <a href={social.website} aria-label="Website" className="hover:opacity-90">
-                  <IconGlobe />
-                </a>
-              )}
-            </div>
           </div>
 
           {/* Company */}
@@ -169,7 +126,7 @@ export default function Footer({
                 Contact
               </a>
               <a
-                href="mailto:zach@as3six.com?subject=Partnerships%20%2F%20CWEC"
+                href="mailto:contact@as3six.com?subject=Partnerships%20%2F%20CWEC"
                 className="rounded-lg bg-white/10 px-3 py-2 text-xs font-medium hover:bg-white/15 ring-1 ring-white/10"
               >
                 Partnerships

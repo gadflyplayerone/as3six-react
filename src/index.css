@@ -63,8 +63,9 @@
 html { scroll-behavior: smooth; }
 
 /* Page chrome + overscroll color */
-html, body, #root { height: 100%; }
-html, body { margin: 0; background-color: #291658; } /* match your footer brand */
+html, body, #root { height: 100%;}
+html, body { margin: 0; background-color: var(--surface); }
+
 
 /* Keep phone-like rubber-band but avoid cross-page bounce chaining */
 html { overscroll-behavior-y: contain; }
@@ -90,3 +91,4 @@ html body { overflow-x: hidden; min-width: 100svw;}
 
 /* Optional but tiny safety belt: block child overflow from creating x-scroll */
 #root { overflow-x: clip; }
+  /* iOS Safari sometimes scrolls the root */

@@ -6,10 +6,11 @@ import logoLight from "assets/images/logo-title-light.png";
 import logoDark from "assets/images/logo-title-dark.png";
 
 const NAV = [
-  { label: "About",        href: "/#about" },
-  { label: "Industries",   href: "/#industries" },
-  { label: "Partnerships", href: "/#partnerships" },
-  { label: "Licensing",    href: "/#licensing" },
+  { label: "About", href: "/#about", mobileOnly: false },
+  { label: "Industries", href: "/#industries", mobileOnly: false },
+  { label: "Partnerships", href: "/#partnerships", mobileOnly: false },
+  { label: "Licensing", href: "/#licensing", mobileOnly: false },
+  { label: "Contact", href: "/#contact", mobileOnly: true },
 ];
 
 /**
@@ -22,9 +23,7 @@ const NAV = [
  * - Always show near the very top to avoid rubber-band bounce issues.
  * - Keep all styling/markup exactly as in the original component.
  */
-function usePinnedHeader(
-  { topThreshold = 12, idleRevealMs = 220, microDelta = 2 } = {}
-) {
+function usePinnedHeader({ topThreshold = 12, idleRevealMs = 220, microDelta = 2 } = {}) {
   const [pinned, setPinned] = useState(true);
   const lastY = useRef(0);
   const raf = useRef<number | null>(null);
@@ -59,7 +58,7 @@ function usePinnedHeader(
         // If there is *any* real movement, immediately hide
         if (Math.abs(dy) >= microDelta) {
           if (pinned) setPinned(false); // slide up/out as soon as scrolling starts
-          scheduleIdleReveal();         // and wait for complete stop to show again
+          scheduleIdleReveal(); // and wait for complete stop to show again
           return;
         }
 
@@ -91,15 +90,12 @@ export default function Header() {
   // If menu is open, keep header visible
   const isVisible = open || pinned;
 
-  // lock/unlock page scroll when menu is open
-  useEffect(() => {
-    document.documentElement.style.overflow = open ? "hidden" : "";
-    return () => { document.documentElement.style.overflow = ""; };
-  }, [open]);
 
   // close on ESC
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
@@ -134,7 +130,7 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav aria-label="Primary" className={`hidden md:flex items-center gap-8 text-sm ${text}`}>
-            {NAV.map((i) => (
+            {NAV.filter((i) => !i.mobileOnly).map((i) => (
               <a key={i.href} href={i.href} className="hover:opacity-80">
                 {i.label}
               </a>
@@ -147,7 +143,9 @@ export default function Header() {
               href="/#contact"
               className={[
                 "hidden sm:inline-flex rounded-xl px-3 py-2 text-sm font-medium transition",
-                isScrolled ? "bg-gray-900 text-white hover:bg-gray-800" : "bg-white/10 text-white hover:bg-white/20",
+                isScrolled
+                  ? "bg-gray-900 text-white hover:bg-gray-800"
+                  : "bg-white/10 text-white hover:bg-white/20",
               ].join(" ")}
             >
               Contact
@@ -210,14 +208,19 @@ export default function Header() {
 function SvgBars() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none">
-      <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path
+        d="M3 6h18M3 12h18M3 18h18"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
 function SvgX() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none">
-    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }

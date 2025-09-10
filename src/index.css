@@ -92,3 +92,19 @@ html body { overflow-x: hidden; min-width: 100svw;}
 /* Optional but tiny safety belt: block child overflow from creating x-scroll */
 #root { overflow-x: clip; }
   /* iOS Safari sometimes scrolls the root */
+/* 1) Clip horizontal overflow at the app root (doesn't change the document scroller) */
+#root {
+  inline-size: 100dvw;      /* same as width: 100dvw */
+  max-inline-size: 100dvw;
+  overflow-x: clip;         /* blocks x-scroll without affecting y-scroll or header logic */
+  margin-inline: auto;
+}
+
+/* 2) Tailwind full-bleed guard: replace 100vw math with dynamic viewport width */
+.w-screen { width: 100dvw !important; max-width: 100dvw !important; }
+
+/* 3) Flex overflow guard (common cause of 1–2px drift on mobile) */
+.flex > * { min-width: 0; }
+
+/* 4) Media guard so images/videos never push layout wider than the viewport */
+img, video, canvas, svg { max-width: 100%; height: auto; }

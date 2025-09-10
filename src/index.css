@@ -68,3 +68,19 @@ html, body { margin: 0; background-color: #291658; } /* match your footer brand 
 
 /* Keep phone-like rubber-band but avoid cross-page bounce chaining */
 html { overscroll-behavior-y: contain; }
+
+/* Keep document scrolling intact; only block sideways overflow */
+body {
+  margin: 0;
+  overflow-x: hidden;      /* stop horizontal scroll, keep vertical as-is */
+}
+
+/* Constrain your app to the visible viewport width */
+#root {
+  width: 100%;
+  max-width: 100svw;       /* handles mobile UI chrome changes */
+  margin: 0 auto;
+}
+
+/* If you’ve used 100vw anywhere (e.g., Tailwind w-screen), neutralize it */
+.w-screen { width: 100svw !important; }

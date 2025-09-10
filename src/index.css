@@ -84,3 +84,9 @@ body {
 
 /* If you’ve used 100vw anywhere (e.g., Tailwind w-screen), neutralize it */
 .w-screen { width: 100svw !important; }
+
+/* Add this — iOS Safari scrolls the root element, not just body */
+html body { overflow-x: hidden; }
+
+/* Optional but tiny safety belt: block child overflow from creating x-scroll */
+#root { overflow-x: clip; }

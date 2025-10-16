@@ -1,5 +1,6 @@
 // src/components/CookieConsent.tsx
 import { useEffect, useState } from "react";
+import { setAnalyticsEnabled } from "@/lib/analytics";
 
 const STORAGE_KEY = "as3six-cookie-consent";
 
@@ -27,13 +28,25 @@ export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (!getStoredConsent()) {
+    const stored = getStoredConsent();
+    if (stored === "accepted") {
+      setAnalyticsEnabled(true);
+      setVisible(false);
+      return;
+    }
+    if (stored === "declined") {
+      setAnalyticsEnabled(false);
+      setVisible(false);
+      return;
+    }
+    if (!stored) {
       setVisible(true);
     }
   }, []);
 
   const handleChoice = (choice: ConsentChoice) => {
     persistConsent(choice);
+    setAnalyticsEnabled(choice === "accepted");
     setVisible(false);
   };
 

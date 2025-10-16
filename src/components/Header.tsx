@@ -1,6 +1,7 @@
 // src/components/Header.tsx
 import { useEffect, useRef, useState } from "react";
 import { useScrollState } from "@/hooks/useScrollState";
+import { trackEvent } from "@/lib/analytics";
 
 import logoLight from "assets/images/logo-title-light.png";
 import logoDark from "assets/images/logo-title-dark.png";
@@ -147,6 +148,9 @@ export default function Header() {
                   ? "bg-gray-900 text-white hover:bg-gray-800"
                   : "bg-white/10 text-white hover:bg-white/20",
               ].join(" ")}
+              onClick={() =>
+                trackEvent("cta_click", { label: "header_contact_desktop" })
+              }
             >
               Contact
             </a>
@@ -181,7 +185,12 @@ export default function Header() {
             <li key={i.href}>
               <a
                 href={i.href}
-                onClick={onNavigate}
+                onClick={() => {
+                  if (i.label === "Contact") {
+                    trackEvent("cta_click", { label: "header_contact_mobile" });
+                  }
+                  onNavigate();
+                }}
                 className="block rounded-lg px-3 py-2 font-medium text-white/90 hover:text-white hover:bg-white/5"
               >
                 {i.label}

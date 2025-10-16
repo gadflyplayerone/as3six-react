@@ -84,7 +84,7 @@ export default function Home() {
         <Contact
         id="contact"
         title="Contact"
-        subtitle="We respond quickly to coalition defense, aerospace, and industrial magnet requests."
+        subtitle="We respond quickly to all requests, big or small."
         emailTo="contact@as3six.com"
         phone="+1 (202) 422-2951"
         addressLines={["Michigan", "United States"]}

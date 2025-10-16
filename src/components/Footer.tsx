@@ -6,6 +6,7 @@ import flagUSA from "assets/images/usa.svg";
 import flagIsrael from "assets/images/israel.svg";
 import flagNATO from "assets/images/nato.svg";
 import flagUkraine from "assets/images/ukraine.svg";
+import { trackEvent } from "@/lib/analytics";
 
 type FooterProps = {
   id?: string;
@@ -124,18 +125,24 @@ export default function Footer({
           <div className="md:col-span-1">
             <h4 className="text-sm font-semibold tracking-wide text-white/90">About</h4>
             <p className="mt-3 text-sm text-white/80">
-              CWEC unlocks step-response electromagnetic performance for coalition defense fleets, aerospace platforms, and high-duty industrial magnetics. Partner with us to commercialize across regulated and global markets.
+              CWEC unlocks near instant (~250 ns) electromagnetic actuation performance for coalition defense fleets, aerospace platforms, and high-duty industrial magnetics. Partner with us to commercialize across regulated and global markets.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <a
                 href="/#contact"
                 className="rounded-lg bg-white text-theme-dark px-3 py-2 text-xs font-semibold hover:opacity-95"
+                onClick={() =>
+                  trackEvent("cta_click", { label: "footer_contact" })
+                }
               >
                 Contact
               </a>
               <a
                 href="mailto:contact@as3six.com?subject=Partnerships%20%2F%20CWEC"
                 className="rounded-lg bg-white/10 px-3 py-2 text-xs font-medium hover:bg-white/15 ring-1 ring-white/10"
+                onClick={() =>
+                  trackEvent("cta_click", { label: "footer_partnerships_email" })
+                }
               >
                 Partnerships
               </a>

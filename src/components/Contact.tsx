@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 type ContactProps = {
   id?: string;
@@ -49,6 +50,11 @@ export default function Contact({
       .filter(Boolean)
       .join("\n");
 
+    trackEvent("contact_form_submit", {
+      topic,
+      has_company: Boolean(company),
+    });
+
     const mailto = `mailto:${encodeURIComponent(emailTo)}?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
@@ -89,17 +95,29 @@ export default function Contact({
               ))}
             </div>
             <div className="space-y-1">
-              <a className="block hover:opacity-90" href={`tel:${cleanTel(phone)}`}>
+              <a
+                className="block hover:opacity-90"
+                href={`tel:${cleanTel(phone)}`}
+                onClick={() =>
+                  trackEvent("cta_click", { label: "contact_phone_link" })
+                }
+              >
                 {phone}
               </a>
-              <a className="block hover:opacity-90" href={`mailto:${emailTo}`}>
+              <a
+                className="block hover:opacity-90"
+                href={`mailto:${emailTo}`}
+                onClick={() =>
+                  trackEvent("cta_click", { label: "contact_email_card" })
+                }
+              >
                 {emailTo}
               </a>
             </div>
             <div className="pt-2 text-sm text-white/70 space-y-1">
               <p>Prefer email? Use the form or message us directly.</p>
               <p className="text-white/60">
-                Defense customers: include program security requirements so we route to cleared staff.
+                We aim to respond within 1-2 business days.
               </p>
             </div>
             </div>
@@ -210,6 +228,9 @@ export default function Contact({
                 <a
                   href={`mailto:${emailTo}`}
                   className="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/15 ring-1 ring-white/10"
+                  onClick={() =>
+                    trackEvent("cta_click", { label: "contact_email_direct" })
+                  }
                 >
                   Email directly
                 </a>

@@ -18,6 +18,7 @@ import Terms from "@/pages/Terms";
 import Cookies from "@/pages/Cookies";
 import NotFound from "@/pages/NotFound";
 import ScrollToTop from "@/components/ScrollToTop";
+import CookieConsent from "@/components/CookieConsent";
 
 
 export default function App() {
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
+      <CookieConsent />
     </div>
   );
 }

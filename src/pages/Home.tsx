@@ -2,7 +2,7 @@ import Gallery from "@/components/Gallery";
 import Industries from "@/components/Industries";
 import Partnerships from "@/components/Partnerships";
 import Licensing from "@/components/Licensing";
-import Contact from "@/components/Contact"
+import Contact from "@/components/Contact";
 
 import pic1 from "assets/gallery/1.jpg";
 import pic2 from "assets/gallery/2.jpg";
@@ -43,7 +43,6 @@ export default function Home() {
     <main className="pt-16">
       <section id="about" className="scroll-mt-16">
         <Gallery
-          title="CWEC magnetics for Air & Space Forces, NATO alliances, and Israeli defense"
           images={images}
           autoPlayMs={999999}
           headerOffsetPx={64}
@@ -52,27 +51,18 @@ export default function Home() {
 
       <section className="scroll-mt-16 bg-theme-dark/40">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 text-white">
-          <h1 className="text-3xl md:text-4xl font-semibold">
-            Continuous Wave Electromagnetic Control for Air &amp; Space Forces, NATO, and Allied Defense
-          </h1>
-          <p className="mt-4 text-base md:text-lg text-white/80">
-            AS3SIX delivers continuous wave electromagnetic control (CWEC) that unlocks superior coil response, pulsed
-            power fidelity, and EMI resilience. We support U.S. Air Force and U.S. Space Force programs, NATO joint
-            commands, Israeli missile defense initiatives, and mission-driven industrial partners modernizing magnets and
-            actuation hardware.
-          </p>
           <div className="mt-6 grid gap-4 md:grid-cols-3 text-sm text-white/80">
             <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
               <h2 className="text-lg font-semibold text-white">Defense-Grade Magnetics</h2>
               <p className="mt-2">
-                Rapid field steps, deterministic safing, and ruggedized coils for aircraft, hypersonics, missile defense,
-                and counter-UAS missions.
+                Rapid field steps, deterministic safing, and ruggedized coils for aircraft, hypersonics, integrated defense,
+                and counter-UAS missions across allied forces.
               </p>
             </div>
             <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
               <h2 className="text-lg font-semibold text-white">Coalition Integration</h2>
               <p className="mt-2">
-                NATO interoperability, ITAR/DFARS alignment, and regional licensing to equip allied commands with CWEC-enabled
+                Coalition interoperability, compliance alignment, and regional licensing to equip partners with CWEC-enabled
                 actuation.
               </p>
             </div>
@@ -94,7 +84,7 @@ export default function Home() {
         <Contact
         id="contact"
         title="Contact"
-        subtitle="We respond quickly to Air & Space Force, NATO, Israeli defense, and industrial magnet requests."
+        subtitle="We respond quickly to coalition defense, aerospace, and industrial magnet requests."
         emailTo="contact@as3six.com"
         phone="+1 (202) 422-2951"
         addressLines={["Michigan", "United States"]}

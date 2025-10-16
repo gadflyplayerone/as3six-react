@@ -11,24 +11,21 @@ phases:
       - node -v
       - npm -v
       # Try a clean install first; if it fails with peer conflicts, toggle the fallback line:
-      - npm i
+      - npm ci
       # - npm ci --legacy-peer-deps
-
   pre_build:
     commands:
       - echo "Entered the pre_build phase..."
-
   build:
     commands:
       - echo "Entered the build phase..."
       - echo "Build started on $(date)"
       - npm run build
-
   post_build:
     commands:
       - echo "Entered the post_build phase..."
+      - node scripts/generate-sitemap.mjs dist
       - echo "Build completed on $(date)"
-
 artifacts:
   files:
     - "**/*"

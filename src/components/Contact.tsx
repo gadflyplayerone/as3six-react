@@ -13,7 +13,7 @@ type ContactProps = {
 export default function Contact({
   id = "contact",
   title = "Contact",
-  subtitle = "Align CWEC magnetics for Air Force, Space Force, NATO, Israeli defense, and industrial programs.",
+  subtitle = "Align CWEC magnetics for coalition defense, aerospace, and industrial programs.",
   emailTo = "contact@as3six.com",
   phone = "+1 (202) 422-2951",
   addressLines = ["Michigan", "United States"],
@@ -167,8 +167,8 @@ export default function Contact({
                 >
                   {[
                     "General",
-                    "Defense Programs (USAF/USSF/NATO)",
-                    "Israeli Partnerships",
+                    "Defense Programs",
+                    "Strategic Partnerships",
                     "Magnet Manufacturing",
                     "Licensing",
                     "Technical",

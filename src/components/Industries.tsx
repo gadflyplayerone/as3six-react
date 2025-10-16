@@ -17,9 +17,9 @@ type IndustriesProps = {
 
 const defaultItems: Industry[] = [
   {
-    name: "Air & Space Forces",
+    name: "Air & Space Readiness",
     blurb:
-      "Flight-qualified CWEC magnetics for U.S. Air Force, U.S. Space Force, and allied air commands needing deterministic coil control.",
+      "Flight-qualified CWEC magnetics for allied air and space commands needing deterministic coil control.",
     apps: [
       "Secondary flight control & thrust vector coils with μs response",
       "Directed-energy & electronic warfare pod pulsed power",
@@ -31,12 +31,12 @@ const defaultItems: Industry[] = [
     icon: <IconAero />,
   },
   {
-    name: "NATO & Allied Defense",
+    name: "Coalition Defense Networks",
     blurb:
-      "Interoperable magnetics for NATO primes, joint commands, and coalition depots with EMI-hardened actuation.",
+      "Interoperable magnetics for coalition primes, joint commands, and depot sustainment with EMI-hardened actuation.",
     apps: [
       "Integrated air & missile defense launcher coils",
-      "Railgun/coilgun research fixtures across NATO labs",
+      "Railgun/coilgun research fixtures across coalition labs",
       "Naval degaussing and magnetic signature management",
       "Expeditionary power & energy security microgrids",
       "Counter-UAS directed energy pulse shaping",
@@ -45,16 +45,16 @@ const defaultItems: Industry[] = [
     icon: <IconRadar />,
   },
   {
-    name: "Israel & Missile Defense",
+    name: "Integrated Missile Defense",
     blurb:
-      "CWEC field agility for Israeli MOD, Rafael, and aerospace innovators focused on missile defense and counter-UAS missions.",
+      "CWEC field agility for layered missile defense, aerospace innovators, and counter-UAS missions.",
     apps: [
-      "Iron Dome & David’s Sling launcher actuation upgrades",
+      "Launcher actuation upgrades across layered defense architectures",
       "Interceptor seeker field tuning and calibration coils",
       "Counter-UAS defeat system pulsed magnetics",
       "Precision valve blocks for loitering munition payloads",
       "Hardening EMI shielding for radar & C4I shelters",
-      "Classified testbed coil drivers with rapid prototyping"
+      "Rapid prototyping for classified testbed coil drivers"
     ],
     icon: <IconShield />,
   },
@@ -89,7 +89,7 @@ const defaultItems: Industry[] = [
   {
     name: "Aerospace & Defense",
     blurb:
-      "Decision-grade field control for USAF/USSF programs, NATO primes, and defense OEMs needing fast pulsed power and EMI/EMP resilience.",
+      "Decision-grade field control for sovereign defense programs, coalition primes, and OEMs needing fast pulsed power and EMI/EMP resilience.",
     apps: [
       "Pulsed power gating & crowbar coils (ns-class turn-on)",
       "High-G fuze/pyro safing coils with precise timing",
@@ -103,7 +103,7 @@ const defaultItems: Industry[] = [
   {
     name: "Space Systems",
     blurb:
-      "Field agility for on-orbit control, Space Force payload survivability, and responsive space architectures with mass-efficient coils.",
+      "Field agility for on-orbit control, sovereign payload survivability, and responsive space architectures with mass-efficient coils.",
     apps: [
       "Magnetorquer attitude control with sharper steps",
       "Reaction wheel magnetic brakes w/ micro-slew control",

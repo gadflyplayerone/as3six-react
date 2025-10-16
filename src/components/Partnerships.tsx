@@ -47,12 +47,12 @@ export default function Partnerships({
                 Bring CWEC to market—together
               </h3>
               <p className="mt-2 text-slate-300">
-                We partner with OEMs, Tier-1s, primes, NATO and USSF/USAF program offices, and Israeli defense majors to
+                We partner with OEMs, Tier-1s, primes, coalition program offices, and strategic defense majors to
                 accelerate integration, certification, and scale. Co-development, licensing, and
                 reference designs available with secure collaboration paths.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {["Co-development", "Air & Space Force onboarding", "NATO/ITAR alignment", "IP licensing", "Reference designs", "Manufacturing enablement"].map((b) => (
+                {["Co-development", "Mission onboarding", "Export compliance alignment", "IP licensing", "Reference designs", "Manufacturing enablement"].map((b) => (
                   <span key={b} className="inline-flex items-center rounded-full bg-white/10 text-white/90 text-xs font-medium px-3 py-1 ring-1 ring-white/10">
                     {b}
                   </span>
@@ -125,20 +125,20 @@ export default function Partnerships({
           </header>
           <SectionBlock title="Sample applications">
             {[
-              "USAF/USSF flight control magnetics",
+              "Flight control magnetics for coalition aircraft",
               "Counter-UAS & missile defense coils",
               "Directed energy pulse conditioning",
               "Degaussing & magnetic signature control",
               "Safing/arming actuators",
-              "NATO radar & EW calibration tooling",
+              "Expeditionary radar & EW calibration tooling",
             ].map(Chip)}
           </SectionBlock>
           <SectionBlock title="Ideal partners">
             {[
-              "USAF RSO & SpaceWERX teams",
-              "USSF delta & SPO leadership",
-              "NATO primes & research centres",
-              "Israeli MOD / Rafael / IAI",
+              "Air & space readiness commands",
+              "Defense innovation units",
+              "Coalition primes & research centres",
+              "Strategic ministries of defense",
               "Secure manufacturing",
             ].map(Chip)}
           </SectionBlock>

@@ -1,14 +1,11 @@
 import React from "react";
 // src/components/Footer.tsx
-import { Link } from "react-router-dom";
-
-const legalLinks = [
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms of Use", href: "/terms" },
-  { label: "Cookies", href: "/cookies" },
-];
 
 import logoLight from "assets/images/logo-title-light.png"; // optional brand mark on dark footer
+import flagUSA from "assets/images/usa.svg";
+import flagIsrael from "assets/images/israel.svg";
+import flagNATO from "assets/images/nato.svg";
+import flagUkraine from "assets/images/ukraine.svg";
 
 type FooterProps = {
   id?: string;
@@ -59,6 +56,18 @@ export default function Footer({
         {/* floating glow accents */}
         <div className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
         {/* <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-white/10 blur-3xl" /> */}
+
+        <div className="relative mb-10 flex flex-col items-center gap-3 text-white">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">
+            We Shall Prevail:
+          </p>
+          <div className="flex items-center gap-4">
+            <img src={flagUSA} alt="United States flag" className="h-6 w-auto md:h-8" loading="lazy" />
+            <img src={flagIsrael} alt="Israel flag" className="h-6 w-auto md:h-8" loading="lazy" />
+            <img src={flagNATO} alt="NATO flag" className="h-6 w-auto md:h-8" loading="lazy" />
+            <img src={flagUkraine} alt="Ukraine flag" className="h-6 w-auto md:h-8" loading="lazy" />
+          </div>
+        </div>
 
         {/* grid */}
         <div className="relative grid grid-cols-1 gap-10 md:grid-cols-4">
@@ -115,7 +124,7 @@ export default function Footer({
           <div className="md:col-span-1">
             <h4 className="text-sm font-semibold tracking-wide text-white/90">About</h4>
             <p className="mt-3 text-sm text-white/80">
-              CWEC unlocks step-response electromagnetic performance for Air Force and Space Force fleets, NATO and Israeli defense programs, and high-duty industrial magnetics. Partner with us to commercialize across regulated and global markets.
+              CWEC unlocks step-response electromagnetic performance for coalition defense fleets, aerospace platforms, and high-duty industrial magnetics. Partner with us to commercialize across regulated and global markets.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <a

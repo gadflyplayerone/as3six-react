@@ -102,7 +102,7 @@ export default function Licensing({
               <p className="mt-2 text-slate-300">
                 We align incentives via simple, transparent economics: a size-based per-unit license
                 plus a light royalty on your electromagnet ASP. Scale wins get volume discounts.
-                Reference designs and enablement reduce your time-to-value, including secure onboarding for Air Force, Space Force, NATO, and Israeli defense programs.
+                Reference designs and enablement reduce your time-to-value, including secure onboarding for coalition defense, aerospace, and industrial programs.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {["Size-based pricing", "Volume discounts", "Reference designs", "Gov/defense procurement support", "Manufacturing enablement"].map((b) => (

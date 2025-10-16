@@ -1,26 +1,36 @@
 # @format
-
 version: 0.2
+
 phases:
   install:
+    runtime-versions:
+      nodejs: 20
     commands:
-      - echo Building for production environment
-      - echo Entered the install phase...
+      - echo "Building for production environment"
+      - echo "Entered the install phase..."
+      - node -v
+      - npm -v
+      # Try a clean install first; if it fails with peer conflicts, toggle the fallback line:
       - npm ci
+      # - npm ci --legacy-peer-deps
+
   pre_build:
     commands:
-      - echo Entered the pre_build phase...
+      - echo "Entered the pre_build phase..."
+
   build:
     commands:
-      - echo Entered the build phase...
-      - echo Build started on `date`
+      - echo "Entered the build phase..."
+      - echo "Build started on $(date)"
       - npm run build
+
   post_build:
     commands:
-      - echo Entered the post_build phase...
-      - echo Build completed on `date`
+      - echo "Entered the post_build phase..."
+      - echo "Build completed on $(date)"
+
 artifacts:
   files:
     - "**/*"
-  name: as3six-react-$(date +%Y-%m-%d) \
-  base-directory: dist/
+  base-directory: dist
+  name: as3six-react-$(date +%Y-%m-%d)

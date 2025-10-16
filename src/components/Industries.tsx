@@ -28,6 +28,7 @@ const defaultItems: Industry[] = [
       "HV contactors for EV pack isolation with minimal bounce",
       "EMI damping coils & transient suppression on power rails"
     ],
+    icon: <IconCar />,
   },
   {
     name: "Aerospace & Defense",
@@ -41,6 +42,7 @@ const defaultItems: Industry[] = [
       "Fast degaussing/tuning coils in seekers & radomes",
       "Rail/coilgun research fixtures & range diagnostics"
     ],
+    icon: <IconAero />,
   },
   {
     name: "Space Systems",
@@ -54,20 +56,21 @@ const defaultItems: Industry[] = [
       "Deployable latch releases with deterministic timing",
       "On-orbit experiments needing fast B-field changes"
     ],
+    icon: <IconSpace />,
   },
   {
-  name: "Audio & Acoustics",
-  blurb: "Ultra-clean transduction for pure-fidelity and extended high-frequency systems.",
-  apps: [
-    "Reference Monitors",
-    "Hi-Fi Tweeters (40–60 kHz)",
-    "Parametric/Beamforming Arrays",
-    "Ultrasonic UX / Haptics",
-    "NDT / Imaging",
-    "Acoustic Sensing"
-  ],
-  icon: <IconWave />,
-},
+    name: "Audio & Acoustics",
+    blurb: "Ultra-clean transduction for pure-fidelity and extended high-frequency systems.",
+    apps: [
+      "Reference Monitors",
+      "Hi-Fi Tweeters (40–60 kHz)",
+      "Parametric/Beamforming Arrays",
+      "Ultrasonic UX / Haptics",
+      "NDT / Imaging",
+      "Acoustic Sensing"
+    ],
+    icon: <IconWave />,
+  },
   {
     name: "Fusion & Plasma",
     blurb:
@@ -80,6 +83,7 @@ const defaultItems: Industry[] = [
       "Active MHD suppression experiments",
       "Retrofit of classical trim coils to CWEC topology"
     ],
+    icon: <IconAtom />,
   },
   {
     name: "Particle Accelerators",
@@ -93,6 +97,7 @@ const defaultItems: Industry[] = [
       "Magnet cycling experiments with reduced EMI",
       "Retrofits for test stands and diagnostics"
     ],
+    icon: <IconAccelerator />,
   },
   {
     name: "Power & Energy",
@@ -106,6 +111,7 @@ const defaultItems: Industry[] = [
       "Active EMI chokes with higher effective bandwidth",
       "Fast saturable reactor research fixtures"
     ],
+    icon: <IconPower />,
   },
   {
     name: "Industrial Automation",
@@ -119,6 +125,7 @@ const defaultItems: Industry[] = [
       "Vibration isolation using fast magnetic actuators",
       "Magnetic clamping with energy-aware hold"
     ],
+    icon: <IconFactory />,
   },
   {
     name: "Robotics",
@@ -132,6 +139,7 @@ const defaultItems: Industry[] = [
       "Legged robot foot actuator de-bounce",
       "On-arm EMI suppression for high-power tools"
     ],
+    icon: <IconRobot />,
   },
   {
     name: "Medical Devices",
@@ -145,6 +153,7 @@ const defaultItems: Industry[] = [
       "Radiotherapy beamline auxiliaries",
       "Lab automation valve arrays (microfluidics)"
     ],
+    icon: <IconHeart />,
   },
   {
     name: "Semiconductor & Precision Tools",
@@ -158,6 +167,7 @@ const defaultItems: Industry[] = [
       "Degauss/field-null coils for metrology",
       "Active EMI damping on motion stages"
     ],
+    icon: <IconChip />,
   },
   {
     name: "Telecom & RF",
@@ -171,6 +181,7 @@ const defaultItems: Industry[] = [
       "Tower power system contactors",
       "Remote radio head valve/actuator control"
     ],
+    icon: <IconAntenna />,
   },
   {
     name: "Audio & Acoustics",
@@ -184,6 +195,7 @@ const defaultItems: Industry[] = [
       "Transducer end-of-line test coils",
       "Anti-pop muting relays with clean edges"
     ],
+    icon: <IconWave />,
   },
   {
     name: "Retail & Consumer Devices",
@@ -197,6 +209,7 @@ const defaultItems: Industry[] = [
       "E-bike/e-scooter brake & lock coils",
       "Battery protection contactor actuation"
     ],
+    icon: <IconTag />,
   },
   {
     name: "Logistics & Warehousing",
@@ -210,6 +223,7 @@ const defaultItems: Industry[] = [
       "Conveyor release locks (micro-timed)",
       "Dock lock actuation under harsh EMI"
     ],
+    icon: <IconTruck />,
   },
   {
     name: "Rail & Marine",
@@ -223,6 +237,7 @@ const defaultItems: Industry[] = [
       "EMI hardening coils for navigation racks",
       "Emergency trip coils with fast reset"
     ],
+    icon: <IconShip />,
   },
   {
     name: "Agriculture",
@@ -236,6 +251,7 @@ const defaultItems: Industry[] = [
       "Electro-weeding pulsed coil fixtures (research)",
       "Equipment EMI damping around GNSS/RTK"
     ],
+    icon: <IconLeaf />,
   },
   {
     name: "Security & Built Environment",
@@ -249,6 +265,7 @@ const defaultItems: Industry[] = [
       "Blast/door latch quick-release mechanisms",
       "Elevator brake release coils"
     ],
+    icon: <IconShield />,
   }
 ];
 
@@ -405,8 +422,6 @@ function IconTruck() {
     </svg>
   );
 }
-
-// 2) Add this inline icon with the others at the bottom of the file
 function IconWave() {
   return (
     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
@@ -421,3 +436,115 @@ function IconWave() {
   );
 }
 
+/* ---- New lightweight icons for better semantics ---- */
+
+function IconAero() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <path d="M3 13l18-6-6 6 6 6-18-6Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      <path d="M3 13l6 6" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+function IconSpace() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <circle cx="12" cy="12" r="6.5" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M3 12c3-2 6-3 9-3s6 1 9 3" stroke="currentColor" strokeWidth="1.5"/>
+      <circle cx="16.5" cy="7.5" r="1.5" fill="currentColor"/>
+    </svg>
+  );
+}
+function IconAtom() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <circle cx="12" cy="12" r="1.8" fill="currentColor"/>
+      <path d="M4 12c0-4.4 3.6-8 8-8 2.6 0 5.7 1.7 7.5 4" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M20 12c0 4.4-3.6 8-8 8-2.6 0-5.7-1.7-7.5-4" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M6 6c2.8 2.8 9.2 2.8 12 0M6 18c2.8-2.8 9.2-2.8 12 0" stroke="currentColor" strokeWidth="1.5"/>
+    </svg>
+  );
+}
+function IconAccelerator() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M12 4v8l6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}
+function IconPower() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M12 3v9m2-6-6 9h5l-1 6 6-9h-4Z" stroke="currentColor" strokeWidth="1.5"/>
+    </svg>
+  );
+}
+function IconFactory() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <path d="M3 21V9l6 3V9l6 3V6l6-2v17H3Z" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M6 21v-4h3v4M12 21v-4h3v4M18 21v-4h3v4" stroke="currentColor" strokeWidth="1.5"/>
+    </svg>
+  );
+}
+function IconRobot() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <rect x="5" y="7" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+      <circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/>
+      <path d="M12 7V4m-7 9H3m18 0h-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}
+function IconChip() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M12 7v-3M12 20v-3M7 12H4M20 12h-3M8 4v3M16 4v3M8 20v-3M16 20v-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}
+function IconAntenna() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <path d="M12 20v-6m-3 6h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <circle cx="12" cy="8" r="2" fill="currentColor"/>
+      <path d="M5 5c2.8-2.8 10.2-2.8 13 0M7.5 7.5c1.8-1.8 7.2-1.8 9 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}
+function IconTag() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <path d="M3 12l9-9h6l3 3v6l-9 9-9-9Z" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="16.5" cy="7.5" r="1.25" fill="currentColor"/>
+    </svg>
+  );
+}
+function IconShip() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <path d="M3 15l9-4 9 4v3H3v-3Z" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M6 18c2 1.5 10 1.5 12 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M12 11V4h3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}
+function IconLeaf() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <path d="M20 4C12 4 4 8 4 16c0 2.5 1.5 4 4 4 8 0 12-8 12-16Z" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M8 20c2-6 6-10 12-12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}
+function IconShield() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <path d="M12 3l8 3v6c0 5-4 7.5-8 9-4-1.5-8-4-8-9V6l8-3Z" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M9.5 12.5l2 2 3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}

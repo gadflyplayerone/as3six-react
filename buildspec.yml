@@ -11,7 +11,7 @@ phases:
       - node -v
       - npm -v
       # Try a clean install first; if it fails with peer conflicts, toggle the fallback line:
-      - npm ci
+      - npm i
       # - npm ci --legacy-peer-deps
 
   pre_build:

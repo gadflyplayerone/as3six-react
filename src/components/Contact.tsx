@@ -13,7 +13,7 @@ type ContactProps = {
 export default function Contact({
   id = "contact",
   title = "Contact",
-  subtitle = "Let’s align on scope, timelines, and outcomes.",
+  subtitle = "Align CWEC magnetics for Air Force, Space Force, NATO, Israeli defense, and industrial programs.",
   emailTo = "contact@as3six.com",
   phone = "+1 (202) 422-2951",
   addressLines = ["Michigan", "United States"],
@@ -96,8 +96,11 @@ export default function Contact({
                 {emailTo}
               </a>
             </div>
-            <div className="pt-2 text-sm text-white/70">
-              Prefer email? Use the form or message us directly.
+            <div className="pt-2 text-sm text-white/70 space-y-1">
+              <p>Prefer email? Use the form or message us directly.</p>
+              <p className="text-white/60">
+                Defense customers: include program security requirements so we route to cleared staff.
+              </p>
             </div>
             </div>
           </aside>
@@ -162,7 +165,15 @@ export default function Contact({
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
                 >
-                  {["General", "Partnerships", "Licensing", "Technical", "Media"].map((t) => (
+                  {[
+                    "General",
+                    "Defense Programs (USAF/USSF/NATO)",
+                    "Israeli Partnerships",
+                    "Magnet Manufacturing",
+                    "Licensing",
+                    "Technical",
+                    "Media",
+                  ].map((t) => (
                     <option key={t} value={t}>
                       {t}
                     </option>

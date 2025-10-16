@@ -42,7 +42,49 @@ export default function Home() {
   return (
     <main className="pt-16">
       <section id="about" className="scroll-mt-16">
-        <Gallery title="" images={images} autoPlayMs={999999} headerOffsetPx={64} />
+        <Gallery
+          title="CWEC magnetics for Air & Space Forces, NATO alliances, and Israeli defense"
+          images={images}
+          autoPlayMs={999999}
+          headerOffsetPx={64}
+        />
+      </section>
+
+      <section className="scroll-mt-16 bg-theme-dark/40">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 text-white">
+          <h1 className="text-3xl md:text-4xl font-semibold">
+            Continuous Wave Electromagnetic Control for Air &amp; Space Forces, NATO, and Allied Defense
+          </h1>
+          <p className="mt-4 text-base md:text-lg text-white/80">
+            AS3SIX delivers continuous wave electromagnetic control (CWEC) that unlocks superior coil response, pulsed
+            power fidelity, and EMI resilience. We support U.S. Air Force and U.S. Space Force programs, NATO joint
+            commands, Israeli missile defense initiatives, and mission-driven industrial partners modernizing magnets and
+            actuation hardware.
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3 text-sm text-white/80">
+            <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+              <h2 className="text-lg font-semibold text-white">Defense-Grade Magnetics</h2>
+              <p className="mt-2">
+                Rapid field steps, deterministic safing, and ruggedized coils for aircraft, hypersonics, missile defense,
+                and counter-UAS missions.
+              </p>
+            </div>
+            <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+              <h2 className="text-lg font-semibold text-white">Coalition Integration</h2>
+              <p className="mt-2">
+                NATO interoperability, ITAR/DFARS alignment, and regional licensing to equip allied commands with CWEC-enabled
+                actuation.
+              </p>
+            </div>
+            <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+              <h2 className="text-lg font-semibold text-white">Industrial Magnet Supply</h2>
+              <p className="mt-2">
+                Collaborate with magnet manufacturers, advanced materials labs, and aerospace suppliers to embed CWEC into
+                next-generation platforms.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <Industries id="industries" />
@@ -52,7 +94,7 @@ export default function Home() {
         <Contact
         id="contact"
         title="Contact"
-        subtitle="We typically respond within one business day."
+        subtitle="We respond quickly to Air & Space Force, NATO, Israeli defense, and industrial magnet requests."
         emailTo="contact@as3six.com"
         phone="+1 (202) 422-2951"
         addressLines={["Michigan", "United States"]}

@@ -6,6 +6,7 @@ phases:
     commands:
       - echo Building for production environment
       - echo Entered the install phase...
+      - npm ci
   pre_build:
     commands:
       - echo Entered the pre_build phase...
@@ -13,6 +14,7 @@ phases:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
+      - npm run build
   post_build:
     commands:
       - echo Entered the post_build phase...

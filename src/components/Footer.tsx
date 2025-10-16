@@ -58,7 +58,7 @@ export default function Footer({
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         {/* floating glow accents */}
         <div className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
+        {/* <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-white/10 blur-3xl" /> */}
 
         {/* grid */}
         <div className="relative grid grid-cols-1 gap-10 md:grid-cols-4">
@@ -115,8 +115,7 @@ export default function Footer({
           <div className="md:col-span-1">
             <h4 className="text-sm font-semibold tracking-wide text-white/90">About</h4>
             <p className="mt-3 text-sm text-white/80">
-              CWEC unlocks step-response electromagnetic performance for next-gen actuation and field control.
-              Partner with us to commercialize across regulated and global markets.
+              CWEC unlocks step-response electromagnetic performance for Air Force and Space Force fleets, NATO and Israeli defense programs, and high-duty industrial magnetics. Partner with us to commercialize across regulated and global markets.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <a

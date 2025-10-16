@@ -17,6 +17,62 @@ type IndustriesProps = {
 
 const defaultItems: Industry[] = [
   {
+    name: "Air & Space Forces",
+    blurb:
+      "Flight-qualified CWEC magnetics for U.S. Air Force, U.S. Space Force, and allied air commands needing deterministic coil control.",
+    apps: [
+      "Secondary flight control & thrust vector coils with μs response",
+      "Directed-energy & electronic warfare pod pulsed power",
+      "Electromagnetic launch/arresting retrofits for sortie regen",
+      "Degaussing & stealth field tuning on fifth-gen aircraft",
+      "MRO robotics and autonomous flightline tooling",
+      "Hypersonic air-launched payload valves and safing actuators"
+    ],
+    icon: <IconAero />,
+  },
+  {
+    name: "NATO & Allied Defense",
+    blurb:
+      "Interoperable magnetics for NATO primes, joint commands, and coalition depots with EMI-hardened actuation.",
+    apps: [
+      "Integrated air & missile defense launcher coils",
+      "Railgun/coilgun research fixtures across NATO labs",
+      "Naval degaussing and magnetic signature management",
+      "Expeditionary power & energy security microgrids",
+      "Counter-UAS directed energy pulse shaping",
+      "Secure comms relay and radar calibration tooling"
+    ],
+    icon: <IconRadar />,
+  },
+  {
+    name: "Israel & Missile Defense",
+    blurb:
+      "CWEC field agility for Israeli MOD, Rafael, and aerospace innovators focused on missile defense and counter-UAS missions.",
+    apps: [
+      "Iron Dome & David’s Sling launcher actuation upgrades",
+      "Interceptor seeker field tuning and calibration coils",
+      "Counter-UAS defeat system pulsed magnetics",
+      "Precision valve blocks for loitering munition payloads",
+      "Hardening EMI shielding for radar & C4I shelters",
+      "Classified testbed coil drivers with rapid prototyping"
+    ],
+    icon: <IconShield />,
+  },
+  {
+    name: "Magnet Manufacturing & Materials",
+    blurb:
+      "Co-develop high-performance coil assemblies with magnet manufacturers, additive shops, and materials labs.",
+    apps: [
+      "CWEC-enabled stator/rotor magnet integration kits",
+      "Additive manufactured coil forms with embedded sensing",
+      "High-temperature alloys for aerospace magnetics",
+      "MR fluid valve cores with optimized field control",
+      "High-current bus and conductor packaging",
+      "Magnetic signature test & validation fixtures"
+    ],
+    icon: <IconPower />,
+  },
+  {
     name: "Automotive & Mobility",
     blurb:
       "Slash actuation latency across safety-critical mechatronics; retrofit legacy coils without re-architecting platforms.",
@@ -33,7 +89,7 @@ const defaultItems: Industry[] = [
   {
     name: "Aerospace & Defense",
     blurb:
-      "Decision-grade field control: fast pulsed power, flight-critical actuators, and resilient EMI/EMP countermeasures.",
+      "Decision-grade field control for USAF/USSF programs, NATO primes, and defense OEMs needing fast pulsed power and EMI/EMP resilience.",
     apps: [
       "Pulsed power gating & crowbar coils (ns-class turn-on)",
       "High-G fuze/pyro safing coils with precise timing",
@@ -47,7 +103,7 @@ const defaultItems: Industry[] = [
   {
     name: "Space Systems",
     blurb:
-      "Field agility for on-orbit control and survivability with mass-efficient coils.",
+      "Field agility for on-orbit control, Space Force payload survivability, and responsive space architectures with mass-efficient coils.",
     apps: [
       "Magnetorquer attitude control with sharper steps",
       "Reaction wheel magnetic brakes w/ micro-slew control",
